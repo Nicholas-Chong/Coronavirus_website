@@ -2,7 +2,7 @@
 <html>
     <head>
         {% load static %}
-        <title>Tables</title>
+        <title>Coronavirus</title>
         <!-- Bootstrap provided css files -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -12,11 +12,21 @@
         <style>
             .table {
                 margin: auto;
-                /* margin-bottom: 25px; */
+                margin-bottom: 25px;
                 align-self: center;
+                width: 80%;
+                height: 80%;
+                table-layout: fixed;
             }
 
-            th, td{
+            tbody {
+                width: 80%;
+                height:200px;
+                overflow-y:auto;
+                width: 100%;
+            }
+
+            th, td {
                 text-align: center;
             }
         </style>
@@ -42,14 +52,14 @@
                 </datalist>
                 <button style="align-items: center;" class="btn btn-primary" type="submit">Go</button>
             </form>
-            <table id="main-table" class="table table-striped table-fixed col-10">
-                <thead>
-                    <th onclick="w3.sortHTML('#main-table', '.country', 'td:nth-child(1)')" scope="col">Country</th>
+            <table id="main-table" class="table table-striped table-fixed">
+                <thead style="background-color: rgb(236, 136, 136);" class="sticky-top">
+                    <th style="width: 40%;" scope="col">Countrys</th>
                     <th scope="col">Cases</th>
                     <th scope="col">Recovered</th>
-                    <th scope="col">Deaths</th>
-                </thead>
-                <tbody>
+                    <th scope="col">Deaths</th>  
+                    </thead>
+                <tbody style="margin-bottom: 25px;">
                     {% for country in consolidated %}
                         <tr>
                             <td>{{ country.name }}</td>
