@@ -33,8 +33,6 @@ class Command(BaseCommand):
 
         countries = [i for i in cases_by_country]
 
-        consolidated = []
-
         for country in countries:
             new_country = Country(
                 name = country,
@@ -43,5 +41,4 @@ class Command(BaseCommand):
                 num_deaths = deaths_by_country[country],
             )
 
-            # consolidated.append(new_country)
             new_country.save()
