@@ -25,7 +25,7 @@ SECRET_KEY = 'kvig&wmn@ag6%%-sg11bw99uo@2ird-^q0&anyty5e1bbfevrz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysterious-meadow-30193.herokuapp.com']
 
 
 # Application definition
