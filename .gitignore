@@ -9,3 +9,4 @@ lib/
 db.sqlite3
 /bin
 pyvenv.cfg
+.env
