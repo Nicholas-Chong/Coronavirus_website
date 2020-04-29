@@ -41,7 +41,7 @@ ALLOWED_HOSTS = ['mysterious-meadow-30193.herokuapp.com']
 
 INSTALLED_APPS = [
     'corona_website_app',
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #location where django collect all static files
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
