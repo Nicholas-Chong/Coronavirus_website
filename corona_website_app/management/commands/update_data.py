@@ -39,7 +39,7 @@ class Command(BaseCommand):
 
         for country in countries:
             daily_country_cases = daily_confirmed_cases[daily_confirmed_cases['Country/Region'] == country]
-            daily_country_cases = country_data.drop(columns=country_data.columns[0:4]).values.tolist()[0][4:]
+            daily_country_cases = daily_country_cases.values.tolist()[0][4:]
 
             daily_country_cases = [[dates[i], daily_country_cases[i]] for i in range(0, len(dates))]
             new_country = Country(
