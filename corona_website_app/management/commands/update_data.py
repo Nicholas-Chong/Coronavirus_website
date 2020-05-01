@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
-from corona_website_app.models import Country
-import pandas as pd
+from corona_website_app.models import Country, Dates
 import urllib.request
 
 class Command(BaseCommand):
@@ -23,6 +22,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         Country.objects.all().delete()
+        Dates.objects.all().delete()
 
         daily_confirmed_cases = urllib.request.urlretrieve('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
 
@@ -35,6 +35,7 @@ class Command(BaseCommand):
         countries = [i for i in cases_by_country]
 
         daily_confirmed_cases = pd.read_csv(daily_confirmed_cases[0])
+        new_dates = Dates(dates=list(daily_country_cases.columns)[4:]).save()
 
         for country in countries:
             daily_country_cases = daily_confirmed_cases[daily_confirmed_cases['Country/Region'] == country]
