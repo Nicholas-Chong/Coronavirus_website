@@ -10,3 +10,7 @@ def index(request):
     } 
     
     return render(request, 'corona_website_app/index.html', context=context)
+
+
+def charts(request):
+    return render(request, 'corona_website_app/charts.html', context=None)
