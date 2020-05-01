@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from corona_website_app.models import Country
+from corona_website_app.models import Country, Dates
 
 def index(request):
     consolidated = Country.objects.all()
@@ -13,4 +13,10 @@ def index(request):
 
 
 def charts(request):
-    return render(request, 'corona_website_app/charts.html', context=None)
+    x_labels = Dates.objects.all()[0]
+
+    context = {
+        'x_labels' : x_labels,
+    }
+
+    return render(request, 'corona_website_app/charts.html', context=context)
