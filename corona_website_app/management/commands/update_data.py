@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from corona_website_app.models import Country, Dates
 import urllib.request
+import pandas as pd
 
 class Command(BaseCommand):
     def get_data(self, data_url):
