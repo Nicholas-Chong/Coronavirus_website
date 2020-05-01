@@ -44,7 +44,8 @@ class Command(BaseCommand):
             dates = list(daily_country_cases.columns)
             cases = daily_country_cases.values.tolist()[0]
             daily_country_cases = [[str(dates[i]), str(cases[i])] for i in range(0, len(dates))]
-
+            print(daily_country_cases)
+            
             new_country = Country(
                 name = country,
                 num_cases = cases_by_country[country],
