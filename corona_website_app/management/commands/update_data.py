@@ -36,7 +36,7 @@ class Command(BaseCommand):
         countries = [i for i in cases_by_country]
 
         daily_confirmed_cases = pd.read_csv(daily_confirmed_cases[0])
-        new_dates = Dates(dates=list(daily_country_cases.columns)[4:]).save()
+        new_dates = Dates(dates=list(daily_confirmed_cases.columns[4:])).save()
 
         for country in countries:
             daily_country_cases = daily_confirmed_cases[daily_confirmed_cases['Country/Region'] == country]
