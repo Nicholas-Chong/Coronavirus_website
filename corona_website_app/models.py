@@ -11,3 +11,7 @@ class Country(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Dates(models.Model):
+    dates = ArrayField(models.CharField(null=True, max_length=20))
