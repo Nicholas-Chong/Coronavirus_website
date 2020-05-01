@@ -17,7 +17,7 @@ def charts(request):
     x_labels = Dates.objects.all()[0].dates[0:2]
 
     context = {
-        'x_labels' : json.dump(x_labels),
+        'x_labels' : json.dumps(x_labels),
     }
 
     return render(request, 'corona_website_app/charts.html', context=context)
