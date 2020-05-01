@@ -15,7 +15,6 @@ class Command(BaseCommand):
         ret = {}
         for country in countries:
             filtered = data[(data['Country/Region'] == country)]
-            # total = sum(filtered['4/26/20'])
             total = sum(filtered[filtered.columns[-1]])
             ret[country] = total
 
@@ -25,6 +24,8 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         Country.objects.all().delete()
 
+        daily_confirmed_cases = urllib.request.urlretrieve('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
+
         cases_by_country = self.get_data('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
 
         deaths_by_country = self.get_data('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv')
@@ -33,12 +34,20 @@ class Command(BaseCommand):
 
         countries = [i for i in cases_by_country]
 
+        daily_confirmed_cases = pd.read_csv(daily_confirmed_cases[0])
+        dates = daily_confirmed_cases.columns.values.tolist()[4:]
+
         for country in countries:
+            daily_country_cases = daily_confirmed_cases[daily_confirmed_cases['Country/Region'] == country]
+            daily_country_cases = country_data.drop(columns=country_data.columns[0:4]).values.tolist()[0][4:]
+
+            daily_country_cases = [[dates[i], daily_country_cases[i]] for i in range(0, len(dates))]
             new_country = Country(
                 name = country,
                 num_cases = cases_by_country[country],
                 num_recoveries = recoveries_by_country[country],
                 num_deaths = deaths_by_country[country],
+                daily_confirmed_cases = daily_country_cases,
             )
 
             new_country.save()
