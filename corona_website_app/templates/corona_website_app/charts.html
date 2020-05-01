@@ -51,12 +51,13 @@
                 }
             }
         });
-
+        
+        var x_labels = "{{ x_label }}"
         var ctx2 = document.getElementById('myChart2');
         var myChart2 = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: {{ x_labels }},
+                labels: ["{{ x_labels }}"],
                 datasets: [{
                     label: '# of Votes',
                     data: [12, 19, 3, 5, 2, 3],
