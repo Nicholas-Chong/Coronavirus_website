@@ -42,16 +42,14 @@ class Command(BaseCommand):
             daily_country_cases = daily_confirmed_cases[daily_confirmed_cases['Country/Region'] == country]
             daily_country_cases = daily_country_cases.drop(columns=daily_country_cases.columns[0:4])
 
-            dates = list(daily_country_cases.columns)
             cases = daily_country_cases.values.tolist()[0]
-            daily_country_cases = [str(dates[i]) + ' ' + str(cases[i]) for i in range(0, len(dates))]
 
             new_country = Country(
                 name = country,
                 num_cases = cases_by_country[country],
                 num_recoveries = recoveries_by_country[country],
                 num_deaths = deaths_by_country[country],
-                daily_confirmed_cases = daily_country_cases,
+                daily_confirmed_cases = cases,
             )
 
             new_country.save()

@@ -7,7 +7,7 @@ class Country(models.Model):
     num_recoveries = models.IntegerField()
     num_deaths = models.IntegerField()
 
-    daily_confirmed_cases = ArrayField(ArrayField(models.CharField(null=True, max_length=50)))
+    daily_confirmed_cases = ArrayField(models.CharField(null=True, max_length=50))
 
     def __str__(self):
         return self.name
