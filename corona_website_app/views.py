@@ -14,7 +14,7 @@ def index(request):
 
 
 def charts(request):
-    x_labels = Dates.objects.all()[0].dates[0:10]
+    x_labels = Dates.objects.all()[0].dates[0:1]
 
     context = {
         'x_labels' : x_labels,

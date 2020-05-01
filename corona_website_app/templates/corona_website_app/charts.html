@@ -56,7 +56,7 @@
         var myChart2 = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: "{{ x_labels|safe }}",
+                labels: ["{{ x_labels|safe }}"],
                 datasets: [{
                     label: '# of Votes',
                     data: [12, 19, 3, 5, 2, 3],
