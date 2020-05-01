@@ -35,13 +35,16 @@ class Command(BaseCommand):
         countries = [i for i in cases_by_country]
 
         daily_confirmed_cases = pd.read_csv(daily_confirmed_cases[0])
-        dates = daily_confirmed_cases.columns.values.tolist()[4:]
 
         for country in countries:
+            print(country)
             daily_country_cases = daily_confirmed_cases[daily_confirmed_cases['Country/Region'] == country]
-            daily_country_cases = daily_country_cases.values.tolist()[0][4:]
+            daily_country_cases = daily_country_cases.drop(columns=daily_country_cases.columns[0:4])
 
-            daily_country_cases = [[str(dates[i]), str(daily_country_cases[i])] for i in range(0, len(dates))]
+            dates = list(daily_country_cases.columns)
+            cases = daily_country_cases.values.tolist()[0]
+            daily_country_cases = [[str(dates[i]), str(cases[i])] for i in range(0, len(dates))]
+
             new_country = Country(
                 name = country,
                 num_cases = cases_by_country[country],
@@ -51,3 +54,4 @@ class Command(BaseCommand):
             )
 
             new_country.save()
+            break
