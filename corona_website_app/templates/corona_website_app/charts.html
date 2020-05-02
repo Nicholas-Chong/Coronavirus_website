@@ -33,7 +33,7 @@
 
     <script>
         var labels = {{ x_labels|safe }};
-        var cases_by_country = {{ countries|safe }}
+        var cases_by_country = {{ countries_json|safe }}
         console.log(labels)
         console.log(cases_by_country)
         function create_Chart(chartid, country) {
