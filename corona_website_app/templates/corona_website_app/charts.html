@@ -8,14 +8,16 @@
     <title>My Chart</title>
 </head>
 <body>
-    <div class="container">
-        <canvas class="col-12" id="myChart1"></canvas>
-        <script>create_Chart('myChart1')</script>
-        <canvas class="col-12" id="myChart2"></canvas>
+    <div class="d-flex flex-wrap">
+        <canvas class="col-4" id="myChart1"></canvas>
+        <canvas class="col-4" id="myChart2"></canvas>
+        <canvas class="col-4" id="myChart3"></canvas>
+        <canvas class="col-4" id="myChart4"></canvas>
     </div>
 
     <script>
         var labels = {{ x_labels|safe }};
+        var cases_by_country = {{ cases_data|safe }}
         function create_Chart(chartid) {
             var ctx = document.getElementById(chartid);
             var myChart = new Chart(ctx, {
@@ -23,8 +25,8 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
+                        label: chartid,
+                        data: cases_by_country["US"],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
