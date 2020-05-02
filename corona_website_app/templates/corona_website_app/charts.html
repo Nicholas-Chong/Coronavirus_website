@@ -1,78 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "corona_website_app/base.html" %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+{% block styles %}
+{% endblock styles %}
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% block content %}
+<div style="margin: 25px;" class="d-flex flex-wrap">
+    {% for country in countries %}
+        <canvas class="col-4" id="{{country.name}}"></canvas>
+    {% endfor %}
+</div>
 
-    <!-- Custom css -->
-    <link rel="stylesheet" href="{% static "corona_website_app/styles.css" %}">
-
-    <title>My Chart</title>
-</head>
-<body>
-    {% load static %}
-    <div class="page-header">
-        Coronavirus Cases by Country
-    </div>
-    <ul class="text-center list-inline">
-        <li class="inline-list"><a href="index.html">Map</a></li>
-        <li class="inline-list"><a href="page2.html">Coronavirus Cases</a></li>
-        <li class="inline-list"><a href={% url 'charts' %}>Chart</a></li>
-        <li class="inline-list"><a href="page4.html">Page 4</a></li>
-    </ul>
-    <div style="margin: 25px;" class="d-flex flex-wrap">
-        {% for country in countries %}
-            <canvas class="col-4" id="{{country.name}}"></canvas>
-        {% endfor %}
-    </div>
-
-    <script>
-        var labels = {{ x_labels|safe }};
-        var cases_by_country = {{ countries_json|safe }}
-        console.log(labels)
-        console.log(cases_by_country)
-        function create_Chart(chartid, daily_cases) {
-            console.log(chartid)
-            console.log(daily_cases)
-            var ctx = document.getElementById(chartid);
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: chartid,
-                        data: daily_cases,
-                        backgroundColor: [
-                            'rgba(54, 162, 235, 0.2)',
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                        ],
-                        borderWidth: 1
+<script>
+    var labels = {{ x_labels|safe }};
+    var cases_by_country = {{ countries_json|safe }}
+    console.log(labels)
+    console.log(cases_by_country)
+    function create_Chart(chartid, daily_cases) {
+        console.log(chartid)
+        console.log(daily_cases)
+        var ctx = document.getElementById(chartid);
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: chartid,
+                    data: daily_cases,
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            suggestedMin: 1000
+                        }
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                suggestedMin: 1000
-                            }
-                        }]
-                    }
                 }
-            });
-        }
-        
-        for (country in cases_by_country) {
-            console.log(country['name'])
-            create_Chart(cases_by_country[country]['name'], cases_by_country[country]['daily_confirmed_cases']);
-        }
-    </script>
-</body>
-</html>
+            }
+        });
+    }
+    
+    for (country in cases_by_country) {
+        console.log(country['name'])
+        create_Chart(cases_by_country[country]['name'], cases_by_country[country]['daily_confirmed_cases']);
+    }
+</script>
+{% endblock content %}
