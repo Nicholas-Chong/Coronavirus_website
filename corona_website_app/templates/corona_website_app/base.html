@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <title>Coronavirus</title>
+        <!-- Bootstrap provided css files -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Custom css -->
+        <link rel="stylesheet" href="{% static "corona_website_app/styles.css" %}">
+
+        {% block styles %}{% endblock styles %}
+    </head>
+    <body>
+        <div class="page-header">
+            Coronavirus Cases by Country
+        </div>
+        <ul class="text-center list-inline">
+            <li class="inline-list"><a href="index.html">Map</a></li>
+            <li class="inline-list"><a href="page2.html">Coronavirus Cases</a></li>
+            <li class="inline-list"><a href={% url 'charts' %}>Chart</a></li>
+            <li class="inline-list"><a href="page4.html">Page 4</a></li>
+        </ul>
+        {% block content %}{% endblock %}
+    </body>
+</html>
