@@ -17,6 +17,8 @@
     <script>
         var labels = {{ x_labels|safe }};
         var cases_by_country = {{ cases_data|safe }}
+        console.log(labels)
+        console.log(cases_by_country)
         function create_Chart(chartid) {
             var ctx = document.getElementById(chartid);
             var myChart = new Chart(ctx, {
