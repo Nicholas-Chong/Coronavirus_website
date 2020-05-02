@@ -37,6 +37,8 @@
         console.log(labels)
         console.log(cases_by_country)
         function create_Chart(chartid, daily_cases) {
+            console.log(chartid)
+            console.log(daily_cases)
             var ctx = document.getElementById(chartid);
             var myChart = new Chart(ctx, {
                 type: 'line',
