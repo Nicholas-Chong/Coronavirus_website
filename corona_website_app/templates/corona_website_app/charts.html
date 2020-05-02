@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <canvas class="col-12" id="myChart1"></canvas>
+        <script>create_Chart('myChart1')</script>
         <canvas class="col-12" id="myChart2"></canvas>
     </div>
 
@@ -18,9 +19,9 @@
         function create_Chart(chartid) {
             var ctx = document.getElementById(chartid);
             var myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: labels,
                     datasets: [{
                         label: '# of Votes',
                         data: [12, 19, 3, 5, 2, 3],

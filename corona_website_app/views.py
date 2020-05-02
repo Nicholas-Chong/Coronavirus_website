@@ -14,10 +14,16 @@ def index(request):
 
 
 def charts(request):
-    x_labels = Dates.objects.all()[0].dates[0:6]
+    x_labels = Dates.objects.all()[0].dates
+    countrys = Country.objects.all()
+
+    cases_data = {}
+    for country in countrys:
+        cases_data[country.name] = country.daily_confirmed_cases
 
     context = {
         'x_labels' : json.dumps(x_labels),
+        'cases_data' : json.dumps(cases_data)
     }
 
     return render(request, 'corona_website_app/charts.html', context=context)
