@@ -36,7 +36,7 @@
         var cases_by_country = {{ countries_json|safe }}
         console.log(labels)
         console.log(cases_by_country)
-        function create_Chart(chartid, country) {
+        function create_Chart(chartid, daily_cases) {
             var ctx = document.getElementById(chartid);
             var myChart = new Chart(ctx, {
                 type: 'line',
@@ -44,7 +44,7 @@
                     labels: labels,
                     datasets: [{
                         label: chartid,
-                        data: country.daily_confirmed_cases,
+                        data: daily_cases,
                         backgroundColor: [
                             'rgba(54, 162, 235, 0.2)',
                         ],
@@ -68,8 +68,7 @@
         }
         
         for (country in cases_by_country) {
-            create_Chart(country['name'], country)
-            console.log(country.daily_confirmed_cases)
+            create_Chart(country['name'], country['daily_confirmed_cases'])
         }
     </script>
 </body>
