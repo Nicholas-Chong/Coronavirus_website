@@ -9,10 +9,9 @@
 </head>
 <body>
     <div class="d-flex flex-wrap">
-        <canvas class="col-4" id="myChart1"></canvas>
-        <canvas class="col-4" id="myChart2"></canvas>
-        <canvas class="col-4" id="myChart3"></canvas>
-        <canvas class="col-4" id="myChart4"></canvas>
+        {% for country in cases_data %}
+            <canvas class="col-3" id={{country}}></canvas>
+        {% endfor %}
     </div>
 
     <script>
@@ -58,10 +57,9 @@
             });
         }
 
-        create_Chart('myChart1')
-        create_Chart('myChart2')
-        create_Chart('myChart3')
-        create_Chart('myChart4')
+        for (country in cases_by_country) {
+            create_Chart(country)
+        }
     </script>
 </body>
 </html>
