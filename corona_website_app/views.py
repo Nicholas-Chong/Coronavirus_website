@@ -25,7 +25,7 @@ def charts(request):
 
     context = {
         'x_labels' : json.dumps(x_labels),
-        'cases_data' : json.dumps(cases_data)
+        'cases_data' : json.dumps(cases_data),
         'country_names' : names
     }
 
