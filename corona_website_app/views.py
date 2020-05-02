@@ -26,7 +26,7 @@ def charts(request):
     context = {
         'x_labels' : json.dumps(x_labels),
         'cases_data' : json.dumps(cases_data)
-        'country_names' : json.dumps(names)
+        'country_names' : names
     }
 
     return render(request, 'corona_website_app/charts.html', context=context)
