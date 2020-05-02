@@ -4,53 +4,53 @@
 {% endblock styles %}
 
 {% block content %}
-<div style="margin: 25px;" class="d-flex flex-wrap">
-    {% for country in countries %}
-        <canvas class="col-4" id="{{country.name}}"></canvas>
-    {% endfor %}
-</div>
+    <div style="margin: 25px;" class="d-flex flex-wrap">
+        {% for country in countries %}
+            <canvas class="col-4" id="{{country.name}}"></canvas>
+        {% endfor %}
+    </div>
 
-<script>
-    var labels = {{ x_labels|safe }};
-    var cases_by_country = {{ countries_json|safe }}
-    console.log(labels)
-    console.log(cases_by_country)
-    function create_Chart(chartid, daily_cases) {
-        console.log(chartid)
-        console.log(daily_cases)
-        var ctx = document.getElementById(chartid);
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: chartid,
-                    data: daily_cases,
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(54, 162, 235, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            suggestedMin: 1000
-                        }
+    <script>
+        var labels = {{ x_labels|safe }};
+        var cases_by_country = {{ countries_json|safe }}
+        console.log(labels)
+        console.log(cases_by_country)
+        function create_Chart(chartid, daily_cases) {
+            console.log(chartid)
+            console.log(daily_cases)
+            var ctx = document.getElementById(chartid);
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: chartid,
+                        data: daily_cases,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                        ],
+                        borderWidth: 1
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                suggestedMin: 1000
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-    }
-    
-    for (country in cases_by_country) {
-        console.log(country['name'])
-        create_Chart(cases_by_country[country]['name'], cases_by_country[country]['daily_confirmed_cases']);
-    }
-</script>
+            });
+        }
+        
+        for (country in cases_by_country) {
+            console.log(country['name'])
+            create_Chart(cases_by_country[country]['name'], cases_by_country[country]['daily_confirmed_cases']);
+        }
+    </script>
 {% endblock content %}
