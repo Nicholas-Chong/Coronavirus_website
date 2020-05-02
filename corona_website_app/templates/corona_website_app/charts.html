@@ -66,9 +66,10 @@
                 }
             });
         }
-
+        
         for (country in cases_by_country) {
             create_Chart(country['name'], country)
+            console.log(country['daily_confirmed_cases'])
         }
     </script>
 </body>
