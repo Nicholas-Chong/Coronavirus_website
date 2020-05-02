@@ -26,14 +26,14 @@
         <li class="inline-list"><a href="page4.html">Page 4</a></li>
     </ul>
     <div class="d-flex flex-wrap">
-        {% for country in country_names %}
-            <canvas class="col-4" id="{{country}}"></canvas>
+        {% for country in countries %}
+            <canvas class="col-4" id="{{country.name}}"></canvas>
         {% endfor %}
     </div>
 
     <script>
         var labels = {{ x_labels|safe }};
-        var cases_by_country = {{ cases_data|safe }}
+        var cases_by_country = {{ countries|safe }}
         console.log(labels)
         console.log(cases_by_country)
         function create_Chart(chartid) {
@@ -68,7 +68,7 @@
         }
 
         for (country in cases_by_country) {
-            create_Chart(country)
+            create_Chart(country.name)
         }
     </script>
 </body>
