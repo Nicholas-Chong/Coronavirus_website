@@ -27,7 +27,7 @@
                     labels: labels,
                     datasets: [{
                         label: chartid,
-                        data: cases_by_country["US"],
+                        data: cases_by_country[chartid],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -59,9 +59,9 @@
             });
         }
 
-        // for (country in cases_by_country) {
-        //     create_Chart(country)
-        // }
+        for (country in cases_by_country) {
+            create_Chart(country)
+        }
     </script>
 </body>
 </html>
