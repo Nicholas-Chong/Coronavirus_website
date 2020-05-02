@@ -71,7 +71,7 @@
         
         for (country in cases_by_country) {
             console.log(country['name'])
-            create_Chart(country['name'], country['daily_confirmed_cases']);
+            create_Chart(cases_by_country[country]['name'], cases_by_country[country]['daily_confirmed_cases']);
         }
     </script>
 </body>
