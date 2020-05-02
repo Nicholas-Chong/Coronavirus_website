@@ -46,7 +46,7 @@
                     labels: labels,
                     datasets: [{
                         label: chartid,
-                        data: [0, 1000, 4503],
+                        data: daily_cases,
                         backgroundColor: [
                             'rgba(54, 162, 235, 0.2)',
                         ],
@@ -70,7 +70,7 @@
         }
         
         for (country in cases_by_country) {
-            create_Chart(country['name'], country['daily_confirmed_cases'])
+            create_Chart(country['name'], country['daily_confirmed_cases']);
         }
     </script>
 </body>
