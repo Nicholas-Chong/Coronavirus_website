@@ -5,9 +5,11 @@ import json
 
 def index(request):
     consolidated = Country.objects.all()
+    last_updated = str(Dates.objects.all()[0][-1])
 
     context = {
-        'consolidated' : consolidated
+        'consolidated' : consolidated,
+        'last_updated' : last_updated,
     } 
     
     return render(request, 'corona_website_app/index.html', context=context)
