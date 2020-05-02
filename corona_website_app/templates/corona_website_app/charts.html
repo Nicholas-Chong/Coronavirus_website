@@ -25,7 +25,7 @@
         <li class="inline-list"><a href={% url 'charts' %}>Chart</a></li>
         <li class="inline-list"><a href="page4.html">Page 4</a></li>
     </ul>
-    <div class="d-flex flex-wrap">
+    <div style="width: 80%;" class="d-flex flex-wrap">
         {% for country in countries %}
             <canvas class="col-4" id="{{country.name}}"></canvas>
         {% endfor %}
