@@ -5,7 +5,7 @@ import json
 
 def index(request):
     consolidated = Country.objects.all()
-    last_updated = str(Dates.objects.all()[0][-1])
+    last_updated = str(Dates.objects.all()[0].dates[-1])
 
     context = {
         'consolidated' : consolidated,
