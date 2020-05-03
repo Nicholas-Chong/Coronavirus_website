@@ -2,6 +2,10 @@
 
 {% block styles %}
 <style>
+    @media (max-width: 600px) {
+        font-size: larger;
+    }
+    
     .table {
         margin: auto;
         margin-bottom: 25px;
@@ -9,9 +13,6 @@
         width: 80%;
         height: 80%;
         table-layout: fixed;
-        @media (max-width: 600px) {
-            font-size: larger;
-        }
     }
 
     tbody {
