@@ -35,10 +35,10 @@
         <canvas class="col-lg-4 col-sm-12" id="country"></canvas>
     </div>
     <script>
-        // var labels = {{ x_labels|safe }};
-        // var cases_by_country = {{ countries_json|safe }}
-        // console.log(labels)
-        // console.log(cases_by_country)
+        var labels = {{ x_labels|safe }};
+        var country = {{ country|safe }}
+        console.log(labels)
+        console.log(cases_by_country)
         function create_Chart(chartid, daily_cases) {
             console.log(chartid)
             console.log(daily_cases)
@@ -46,7 +46,7 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['day1', 'day2', 'day3', 'day4'],
+                    labels: labels,
                     datasets: [{
                         label: chartid,
                         data: daily_cases,
@@ -72,6 +72,6 @@
             });
         }
         
-        create_Chart('country', [0, 4, 6, 7, 2])
+        create_Chart(country['name'], country['daily_confirmed_cases'])
     </script>
 {% endblock content %}

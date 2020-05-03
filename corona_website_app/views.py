@@ -35,4 +35,14 @@ def charts(request):
 
 
 def individual_chart(request):
-    return render(request, 'corona_website_app/chart_individual.html')
+    country_to_chart = request.COOKIES['indv_country_to_chart']
+    country_to_chart = Country.objects.filter(name=country_to_chart).values()
+
+    x_labels = Dates.objects.all()[0].dates
+
+    context = {
+        'x_labels' : json.dumps(x_labels),
+        'country' : json.dumps(country_to_chart),
+    }
+
+    return render(request, 'corona_website_app/chart_individual.html', context=context)
