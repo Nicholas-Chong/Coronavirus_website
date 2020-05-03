@@ -43,7 +43,7 @@ def individual_chart(request):
     context = {
         'x_labels' : json.dumps(x_labels),
         'country' : json.dumps(country_to_chart_object),
-        'country_name' = country_to_chart,
+        'country_name' : country_to_chart,
     }
 
     return render(request, 'corona_website_app/chart_individual.html', context=context)
