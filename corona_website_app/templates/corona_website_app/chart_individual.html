@@ -38,7 +38,7 @@
         var labels = {{ x_labels|safe }};
         var country = {{ country|safe }}
         console.log(labels)
-        console.log(cases_by_country)
+        console.log(country)
         function create_Chart(chartid, daily_cases) {
             console.log(chartid)
             console.log(daily_cases)
@@ -72,6 +72,6 @@
             });
         }
         
-        create_Chart(country['name'], country['daily_confirmed_cases'])
+        create_Chart(country[0]['name'], country[0]['daily_confirmed_cases'])
     </script>
 {% endblock content %}
