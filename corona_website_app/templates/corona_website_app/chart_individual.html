@@ -1,0 +1,77 @@
+{% extends "corona_website_app/base.html" %}
+
+{% block styles %}
+    <style>
+        @media only screen and (max-width: 786px) {
+            body {
+                font-size: larger;
+            }
+        }
+        
+        .table {
+            margin: auto;
+            margin-bottom: 25px;
+            align-self: center;
+            width: 80%;
+            height: 80%;
+            table-layout: fixed;
+        }
+
+        tbody {
+            width: 80%;
+            height:200px;
+            overflow-y:auto;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: center;
+        }
+    </style>
+{% endblock styles %}
+
+{% block content %}
+    <div style="margin: 25px;" class="d-flex flex-wrap">
+        <canvas class="col-lg-4 col-sm-12" id="country"></canvas>
+    </div>
+    <script>
+        // var labels = {{ x_labels|safe }};
+        // var cases_by_country = {{ countries_json|safe }}
+        // console.log(labels)
+        // console.log(cases_by_country)
+        function create_Chart(chartid, daily_cases) {
+            console.log(chartid)
+            console.log(daily_cases)
+            var ctx = document.getElementById(chartid);
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['day1', 'day2', 'day3', 'day4'],
+                    datasets: [{
+                        label: chartid,
+                        data: daily_cases,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                suggestedMin: 1000
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+        
+        create_Chart('country', [0, 4, 6, 7, 2])
+    </script>
+{% endblock content %}

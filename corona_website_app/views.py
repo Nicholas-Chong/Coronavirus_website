@@ -32,3 +32,7 @@ def charts(request):
     }
 
     return render(request, 'corona_website_app/charts.html', context=context)
+
+
+def individual_chart(request):
+    return render(request, 'corona_website_app/chart_individual.html')
