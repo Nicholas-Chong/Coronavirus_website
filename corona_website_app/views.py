@@ -36,7 +36,7 @@ def charts(request):
 
 def individual_chart(request):
     country_to_chart = request.COOKIES['indv_country_to_chart']
-    country_to_chart = dict(Country.objects.filter(name=country_to_chart).values())
+    country_to_chart = list(Country.objects.filter(name=country_to_chart).values())
 
     x_labels = Dates.objects.all()[0].dates
 
