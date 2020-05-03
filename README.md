@@ -1,12 +1,12 @@
 # Coronavirus Website
-This website consolidates and visualizes data from. The Center for Systems Science and Engineering (CSSE) at Johns Hopkins University. 
+This website consolidates and visualizes data from The Center for Systems Science and Engineering (CSSE) at Johns Hopkins University. 
 
 **THIS SITE HAS NO AFFILIATIONS WITH THE UNIVERSITY**
 
 Access the site: https://mysterious-meadow-30193.herokuapp.com 
 
 ## Todo
-* Add charts to charts page
+* Add direct links to a country's chart
 * Get proper URL 
 
 ## Data Sources
