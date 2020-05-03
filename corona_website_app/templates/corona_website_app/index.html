@@ -54,7 +54,7 @@
         <tbody style="margin-bottom: 25px;">
             {% for country in consolidated %}
                 <tr>
-                    <td>{{ country.name }}</td>
+                    <td><a href="{% url 'individual_chart' %}" onclick="save_country_to_display('{{ country.name }}')">{{ country.name }}</a></td>
                     <td>{{ country.num_cases }}</td>
                     <td>{{ country.num_recoveries }}</td>
                     <td>{{ country.num_deaths}}</td>
@@ -63,5 +63,11 @@
         </tbody>
     </table>
     <a href="{% url 'individual_chart' %}">test tag</a>
+
+    <script>
+        function save_country_to_display(id) {
+            document.cookie = "indv_country_to_chart=" + id
+        }
+    </script>
 </div>
 {% endblock content %}
