@@ -1,5 +1,7 @@
 {% extends "corona_website_app/base.html" %}
 
+{% block title %}Coronavirus by Country | Single Chart{% endblock title %}
+
 {% block styles %}
     <style>
         @media only screen and (max-width: 786px) {
@@ -36,7 +38,7 @@
     </div>
     <script>
         var labels = {{ x_labels|safe }};
-        var country = {{ country|safe }}
+        var country = {{ country|safe }};
         console.log(labels)
         console.log(country)
         function create_Chart(chartid, daily_cases) {
