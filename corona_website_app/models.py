@@ -9,6 +9,8 @@ class Country(models.Model):
 
     daily_confirmed_cases = ArrayField(models.CharField(null=True, max_length=50))
 
+    country_code = models.CharField(max_length=3, null=True)
+
     def __str__(self):
         return self.name
 
