@@ -53,6 +53,5 @@ class Command(BaseCommand):
             country.num_recoveries = recoveries_by_country[country.name]
             country.num_deaths = deaths_by_country[country.name]
             country.daily_confirmed_cases.append(cases_by_country[country.name])
-
-            # new_country.save()
+            country.save()
             
