@@ -56,6 +56,8 @@ def maps(request):
         'num_cases' : num_cases_per_country,
     }
 
+    return render(request, 'corona_website_app/map.html', context=context)
+
 
 def about(request):
     return render(request, 'corona_website_app/about.html')
