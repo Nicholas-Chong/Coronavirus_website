@@ -12,6 +12,9 @@
         <!-- Charts.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
+        <!-- Plotly graphing library -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
         {% block styles %}{% endblock styles %}
     </head>
     <body>
@@ -19,10 +22,10 @@
             Coronavirus Cases by Country
         </div>
         <ul class="text-center list-inline">
-            <!-- <li class="inline-list"><a href="index.html">Map</a></li> -->
             <li class="inline-list"><a href="{% url 'index' %}">Table</a></li>
             <li class="inline-list"><a href="{% url 'charts' %}">Chart</a></li>
             <li class="inline-list"><a href="{% url 'about' %}">About</a></li>
+            <li class="inline-list"><a href="{% url 'map' %}">Map</a></li>
         </ul>
         {% block content %}{% endblock %}
     </body>

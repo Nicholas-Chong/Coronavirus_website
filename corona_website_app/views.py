@@ -49,5 +49,13 @@ def individual_chart(request):
     return render(request, 'corona_website_app/chart_individual.html', context=context)
 
 
+def maps(request):
+    num_cases_per_country = [country.num_cases for country in Country.objects.all()]
+
+    context = {
+        'num_cases' : num_cases_per_country,
+    }
+
+
 def about(request):
     return render(request, 'corona_website_app/about.html')
