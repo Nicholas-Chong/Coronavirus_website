@@ -36,19 +36,6 @@ class Command(BaseCommand):
         new_dates = Dates(dates=list(daily_confirmed_cases.columns[4:])).save()
 
         for country in countries:
-            # daily_country_cases = daily_confirmed_cases[daily_confirmed_cases['Country/Region'] == country.name]
-            # daily_country_cases = daily_country_cases.drop(columns=daily_country_cases.columns[0:4])
-
-            # cases = [sum(daily_country_cases[col]) for col in daily_country_cases.columns]
-
-            # new_country = Country(
-            #     name = country,
-            #     num_cases = cases_by_country[country],
-            #     num_recoveries = recoveries_by_country[country],
-            #     num_deaths = deaths_by_country[country],
-            #     daily_confirmed_cases = cases,
-            # )
-
             country.num_cases = cases_by_country[country.name]
             country.num_recoveries = recoveries_by_country[country.name]
             country.num_deaths = deaths_by_country[country.name]
