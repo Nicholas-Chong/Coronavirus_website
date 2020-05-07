@@ -4,7 +4,7 @@ from corona_website_app.models import Country, Dates
 import json
 
 def index(request):
-    consolidated = Country.objects.all()
+    consolidated = Country.objects.all().order_by('name')
     last_updated = str(Dates.objects.all()[0].dates[-1])
 
     context = {
@@ -17,7 +17,7 @@ def index(request):
 
 def charts(request):
     x_labels = Dates.objects.all()[0].dates
-    countrys = list(Country.objects.all().values())
+    countrys = list(Country.objects.all().order_by('name').values())
 
     # cases_data = {}
     # names = []
