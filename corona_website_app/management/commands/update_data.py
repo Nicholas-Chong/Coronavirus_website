@@ -33,7 +33,10 @@ class Command(BaseCommand):
         countries = Country.objects.all()
 
         daily_confirmed_cases = pd.read_csv(daily_confirmed_cases[0])
-        new_dates = Dates(dates=list(daily_confirmed_cases.columns[4:])).save()
+        # new_dates = Dates(dates=list(daily_confirmed_cases.columns[4:])).save()
+        new_dates = Dates.objects.all()[0]
+        new_dates.dates = list(daily_confirmed_cases.columns[4:])
+        new_dates.save()
 
         for country in countries:
             country.num_cases = cases_by_country[country.name]
