@@ -30,7 +30,7 @@ class Command(BaseCommand):
 
         recoveries_by_country = self.get_data('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv') # {'name' : num_recoveries}
 
-        countries = Country.objects.all()
+        countries = Country.objects.all().order_by('name')
 
         daily_confirmed_cases = pd.read_csv(daily_confirmed_cases[0])
         # new_dates = Dates(dates=list(daily_confirmed_cases.columns[4:])).save()
