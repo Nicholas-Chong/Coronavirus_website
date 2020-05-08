@@ -15,4 +15,6 @@ class Command(BaseCommand):
         for country in Country.objects.all():
             if country.name in country_list:
                 query_string = 'name == "' + country.name + '"'
-                print(data.query(query_string))
+                code_df = data.query(query_string)
+                code = code_df.iloc[0, 1]
+                country.country_code = code
