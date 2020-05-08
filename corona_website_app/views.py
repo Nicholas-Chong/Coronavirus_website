@@ -50,8 +50,8 @@ def individual_chart(request):
 
 
 def maps(request):
-    num_cases_per_country = [country.num_cases for country in Country.objects.filter(country_code != None).order_by('name')]
-    country_codes =  [country.country_code for country in Country.objects.filter(country_code != None).order_by('name')]
+    num_cases_per_country = [country.num_cases for country in Country.objects.exclude(country_code = None).order_by('name')]
+    country_codes =  [country.country_code for country in Country.objects.exclude(country_code = None).order_by('name')]
 
     context = {
         'num_cases' : num_cases_per_country,
