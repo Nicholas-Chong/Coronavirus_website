@@ -12,7 +12,7 @@ class Command(BaseCommand):
         # print(data.query('name == "Afghanistan"'))
         country_list = data.name.to_list()
 
-        for conutry in Country.objects.all():
+        for country in Country.objects.all():
             if country.name in country_list:
                 query_string = 'name == "' + country.name + '"'
                 print(data.query(query_string))
