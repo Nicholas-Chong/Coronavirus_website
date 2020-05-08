@@ -18,3 +18,4 @@ class Command(BaseCommand):
                 code_df = data.query(query_string)
                 code = code_df.iloc[0, 1]
                 country.country_code = code
+                country.save()
